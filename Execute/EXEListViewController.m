@@ -20,5 +20,17 @@
     self.title = @"Execute";
 }
 
+// Sets 3 of rows
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+// Creates cells
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    cell.textLabel.text = @"Say hi!";
+    return cell;
+}
+
 @end
 
