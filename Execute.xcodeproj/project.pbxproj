@@ -20,6 +20,7 @@
 		E56BD33818DE92A500A9FFD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E56BD33618DE92A500A9FFD7 /* InfoPlist.strings */; };
 		E56BD33A18DE92A500A9FFD7 /* ExecuteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E56BD33918DE92A500A9FFD7 /* ExecuteTests.m */; };
 		E578868218DE96EC0061AFDE /* EXEPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578868118DE96EC0061AFDE /* EXEPlayViewController.m */; };
+		E578868818DF4CD90061AFDE /* EXEListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578868718DF4CD90061AFDE /* EXEListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		E56BD33918DE92A500A9FFD7 /* ExecuteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExecuteTests.m; sourceTree = "<group>"; };
 		E578868018DE96EC0061AFDE /* EXEPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXEPlayViewController.h; sourceTree = "<group>"; };
 		E578868118DE96EC0061AFDE /* EXEPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXEPlayViewController.m; sourceTree = "<group>"; };
+		E578868618DF4CD90061AFDE /* EXEListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXEListViewController.h; sourceTree = "<group>"; };
+		E578868718DF4CD90061AFDE /* EXEListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXEListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				E56BD31B18DE92A500A9FFD7 /* Supporting Files */,
 				E578868018DE96EC0061AFDE /* EXEPlayViewController.h */,
 				E578868118DE96EC0061AFDE /* EXEPlayViewController.m */,
+				E578868618DF4CD90061AFDE /* EXEListViewController.h */,
+				E578868718DF4CD90061AFDE /* EXEListViewController.m */,
 			);
 			path = Execute;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				E578868218DE96EC0061AFDE /* EXEPlayViewController.m in Sources */,
 				E56BD32118DE92A500A9FFD7 /* main.m in Sources */,
 				E56BD32518DE92A500A9FFD7 /* EXEAppDelegate.m in Sources */,
+				E578868818DF4CD90061AFDE /* EXEListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

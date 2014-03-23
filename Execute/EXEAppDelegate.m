@@ -7,7 +7,7 @@
 //
 
 #import "EXEAppDelegate.h"
-#import "EXEPlayViewController.h"
+#import "EXEListViewController.h"
 
 @implementation EXEAppDelegate
 
@@ -17,8 +17,13 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.window.rootViewController = [[EXEPlayViewController alloc] init];
+    // Adds the list
+    UIViewController *viewController = [[EXEListViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = navigationController;
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
