@@ -7,6 +7,7 @@
 //
 
 #import "EXEAppDelegate.h"
+#import "EXEPlayViewController.h"
 
 @implementation EXEAppDelegate
 
@@ -16,6 +17,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
+    self.window.rootViewController = [[EXEPlayViewController alloc] init];
     [self.window makeKeyAndVisible];
     return YES;
 }
