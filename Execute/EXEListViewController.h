@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EXEListViewController : UIViewController
+@interface EXEListViewController : UITableViewController
 
 @end
 
