@@ -19,6 +19,7 @@
 		E56BD33018DE92A500A9FFD7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56BD31818DE92A500A9FFD7 /* UIKit.framework */; };
 		E56BD33818DE92A500A9FFD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E56BD33618DE92A500A9FFD7 /* InfoPlist.strings */; };
 		E56BD33A18DE92A500A9FFD7 /* ExecuteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E56BD33918DE92A500A9FFD7 /* ExecuteTests.m */; };
+		E578868218DE96EC0061AFDE /* EXEPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E578868118DE96EC0061AFDE /* EXEPlayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		E56BD33518DE92A500A9FFD7 /* ExecuteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExecuteTests-Info.plist"; sourceTree = "<group>"; };
 		E56BD33718DE92A500A9FFD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E56BD33918DE92A500A9FFD7 /* ExecuteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExecuteTests.m; sourceTree = "<group>"; };
+		E578868018DE96EC0061AFDE /* EXEPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXEPlayViewController.h; sourceTree = "<group>"; };
+		E578868118DE96EC0061AFDE /* EXEPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXEPlayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				E56BD32418DE92A500A9FFD7 /* EXEAppDelegate.m */,
 				E56BD32618DE92A500A9FFD7 /* Images.xcassets */,
 				E56BD31B18DE92A500A9FFD7 /* Supporting Files */,
+				E578868018DE96EC0061AFDE /* EXEPlayViewController.h */,
+				E578868118DE96EC0061AFDE /* EXEPlayViewController.m */,
 			);
 			path = Execute;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E578868218DE96EC0061AFDE /* EXEPlayViewController.m in Sources */,
 				E56BD32118DE92A500A9FFD7 /* main.m in Sources */,
 				E56BD32518DE92A500A9FFD7 /* EXEAppDelegate.m in Sources */,
 			);
@@ -438,6 +444,7 @@
 				E56BD33F18DE92A500A9FFD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E56BD34018DE92A500A9FFD7 /* Build configuration list for PBXNativeTarget "ExecuteTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +453,7 @@
 				E56BD34218DE92A500A9FFD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
