@@ -26,6 +26,8 @@
 //    Initializes tasks array
     self.tasks = [[NSMutableArray alloc] init];
     [self.tasks addObject:@"Mow the lawn"];
+    [self.tasks addObject:@"Get haircut"];
+    [self.tasks addObject:@"Call mom"];
 }
 
 
