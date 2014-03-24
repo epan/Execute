@@ -74,11 +74,7 @@
 
 
 - (void)toggleEdit:(id)sender {
-    BOOL changeTo = YES;
-    if (self.editing == YES) {
-        changeTo = NO;
-    }
-    [self setEditing:changeTo animated:YES];
+    [self setEditing:!self.editing animated:YES];
 }
 
 @end
