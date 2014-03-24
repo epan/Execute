@@ -52,7 +52,7 @@
 
 // This will be called whenever you press Return
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.tasks addObject:textField.text];
+    [self.tasks insertObject:textField.text atIndex:0];
     [self.tableView reloadData];
     textField.text = nil;
     
