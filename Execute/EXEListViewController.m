@@ -19,15 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Execute";
 //    For reusing cells
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
+//    Adds text field
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 280.f, 32.0f)];
+    textField.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+    textField.returnKeyType = UIReturnKeyGo;
+    self.navigationItem.titleView = textField;
+    
 //    Initializes tasks array
     self.tasks = [[NSMutableArray alloc] init];
-    [self.tasks addObject:@"Mow the lawn"];
-    [self.tasks addObject:@"Get haircut"];
-    [self.tasks addObject:@"Call mom"];
 }
 
 
