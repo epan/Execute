@@ -12,9 +12,13 @@
 
 @property (nonatomic) NSMutableArray *tasks;
 
+@property (nonatomic) NSMutableArray *completedTasks;
+
 @end
 
 @implementation EXEListViewController
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,9 +36,15 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"✏️" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEdit:)];
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
 //    Initializes tasks array
-    NSArray *loadedTasks = [[NSUserDefaults standardUserDefaults] arrayForKey:@"tasks"];
+    NSArray *loadedTasks = [userDefaults arrayForKey:@"tasks"];
     self.tasks = [[NSMutableArray alloc] initWithArray:loadedTasks];
+    
+    loadedTasks = [userDefaults arrayForKey:@"completedTasks"];
+    self.tasks = [[NSMutableArray alloc] initWithArray:loadedTasks];
+
 }
 
 
@@ -43,6 +53,26 @@
     return [self.tasks count];
 }
 
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    if (editing) {
+        self.navigationItem.rightBarButtonItem.title = @"👍";
+    } else {
+        self.navigationItem.rightBarButtonItem.title = @"✏️";
+    }
+}
+
+
+#pragma mark - Actions
+
+- (void)toggleEdit:(id)sender {
+    [self setEditing:!self.editing animated:YES];
+}
+
+
+#pragma mark - UITableViewDataSource
 
 // Creates cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,6 +83,9 @@
     return cell;
 }
 
+
+
+#pragma mark - UITextFieldDelegate
 
 // This will be called whenever you press Return
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -70,22 +103,6 @@
     [userDefaults synchronize];
     
     return NO;
-}
-
-
-- (void)toggleEdit:(id)sender {
-    [self setEditing:!self.editing animated:YES];
-}
-
-
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
-    
-    if (editing) {
-        self.navigationItem.rightBarButtonItem.title = @"👍";
-    } else {
-        self.navigationItem.rightBarButtonItem.title = @"✏️";
-    }
 }
 
 @end
