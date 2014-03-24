@@ -77,5 +77,16 @@
     [self setEditing:!self.editing animated:YES];
 }
 
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    if (editing) {
+        self.navigationItem.rightBarButtonItem.title = @"👍";
+    } else {
+        self.navigationItem.rightBarButtonItem.title = @"✏️";
+    }
+}
+
 @end
 
