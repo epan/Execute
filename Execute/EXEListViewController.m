@@ -53,7 +53,11 @@
 // This will be called whenever you press Return
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.tasks insertObject:textField.text atIndex:0];
-    [self.tableView reloadData];
+    
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
+    
     textField.text = nil;
     
     return NO;
