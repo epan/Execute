@@ -23,12 +23,14 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
 //    Adds text field
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 280.f, 32.0f)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 260.f, 32.0f)];
     textField.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
     textField.returnKeyType = UIReturnKeyGo;
     textField.placeholder = @"What do you want to execute?";
     textField.delegate = self;
     self.navigationItem.titleView = textField;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"✏️" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEdit:)];
     
 //    Initializes tasks array
     NSArray *loadedTasks = [[NSUserDefaults standardUserDefaults] arrayForKey:@"tasks"];
@@ -51,6 +53,7 @@
     return cell;
 }
 
+
 // This will be called whenever you press Return
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.tasks insertObject:textField.text atIndex:0];
@@ -67,6 +70,11 @@
     [userDefaults synchronize];
     
     return NO;
+}
+
+
+- (void)toggleEdit:(id)sender {
+    [self setEditing:YES animated:YES];
 }
 
 @end
