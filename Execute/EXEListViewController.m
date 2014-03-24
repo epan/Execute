@@ -8,7 +8,7 @@
 
 #import "EXEListViewController.h"
 
-@interface EXEListViewController ()
+@interface EXEListViewController () <UITextFieldDelegate>
 
 @property (nonatomic) NSMutableArray *tasks;
 
@@ -26,6 +26,8 @@
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 280.f, 32.0f)];
     textField.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
     textField.returnKeyType = UIReturnKeyGo;
+    textField.placeholder = @"What do you want to execute?";
+    textField.delegate = self;
     self.navigationItem.titleView = textField;
     
 //    Initializes tasks array
@@ -46,6 +48,14 @@
     cell.textLabel.text = self.tasks[indexPath.row];
     
     return cell;
+}
+
+// This will be called whenever you press Return
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.tasks addObject:textField.text];
+    [self.tableView reloadData];
+    
+    return NO;
 }
 
 @end
