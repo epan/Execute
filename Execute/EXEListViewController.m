@@ -43,14 +43,8 @@
     self.tasks = [[NSMutableArray alloc] initWithArray:loadedTasks];
     
     loadedTasks = [userDefaults arrayForKey:@"completedTasks"];
-    self.tasks = [[NSMutableArray alloc] initWithArray:loadedTasks];
+    self.completedTasks = [[NSMutableArray alloc] initWithArray:loadedTasks];
 
-}
-
-
-// Sets number of rows the the number of tasks
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tasks count];
 }
 
 
@@ -72,17 +66,68 @@
 }
 
 
+#pragma mark - Private
+
+//    Saves contents even when the app quits
+- (void)save {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:self.tasks forKey:@"tasks"];
+    [userDefaults setObject:self.completedTasks forKey:@"completedTasks"];
+    [userDefaults synchronize];
+}
+
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+// Sets number of rows the the number of tasks
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 1) {
+        return [self.completedTasks count];
+    }
+    return [self.tasks count];
+}
 
 // Creates cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = self.tasks[indexPath.row];
-    
+
+    if (indexPath.section == 0) {
+        cell.textLabel.text = self.tasks[indexPath.row];
+        cell.textLabel.textColor = [UIColor blackColor];
+    } else {
+        cell.textLabel.text = self.completedTasks[indexPath.row];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+    }
     return cell;
 }
 
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [tableView beginUpdates];
+
+    
+//    Saves the row to the variable before removing it
+    NSString *task = self.tasks[indexPath.row];
+    
+    [self.tasks removeObjectAtIndex:indexPath.row];
+    
+//    Adds to the completed tasks
+    [self.completedTasks insertObject:task atIndex:0];
+    
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
+    
+    [tableView endUpdates];
+    
+    [self save];
+}
 
 
 #pragma mark - UITextFieldDelegate
@@ -97,10 +142,7 @@
     
     textField.text = nil;
     
-//    Saves contents even when the app quits
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.tasks forKey:@"tasks"];
-    [userDefaults synchronize];
+    [self save];
     
     return NO;
 }
