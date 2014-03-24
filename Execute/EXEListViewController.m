@@ -33,6 +33,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = @"Say hi!";
+    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"This is the first cell";
+    }
+    
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"This is the second cell";
+    }
+    
     return cell;
 }
 
