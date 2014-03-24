@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     self.title = @"Execute";
+//    For reusing cells
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
