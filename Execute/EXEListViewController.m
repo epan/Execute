@@ -111,18 +111,28 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [tableView beginUpdates];
-
-    
-//    Saves the row to the variable before removing it
-    NSString *task = self.tasks[indexPath.row];
-    
-    [self.tasks removeObjectAtIndex:indexPath.row];
-    
-//    Adds to the completed tasks
-    [self.completedTasks insertObject:task atIndex:0];
     
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
+
+    if (indexPath.section == 0) {
+        //    Tapped an uncompleted task. Time to complete it!
+        //    Saves the row to the variable before removing it
+        NSString *task = self.tasks[indexPath.row];
+        
+        [self.tasks removeObjectAtIndex:indexPath.row];
+        
+        //    Adds to the completed tasks
+        [self.completedTasks insertObject:task atIndex:0];
+        
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationTop];
+    } else {
+        //    Tapped an completed task. Time to uncomplete it!
+        NSString *task = self.completedTasks[indexPath.row];
+        [self.completedTasks removeObjectAtIndex:indexPath.row];
+        [self.tasks insertObject:task atIndex:0];
+    
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    }
     
     [tableView endUpdates];
     
