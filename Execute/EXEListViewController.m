@@ -31,7 +31,8 @@
     self.navigationItem.titleView = textField;
     
 //    Initializes tasks array
-    self.tasks = [[NSMutableArray alloc] init];
+    NSArray *loadedTasks = [[NSUserDefaults standardUserDefaults] arrayForKey:@"tasks"];
+    self.tasks = [[NSMutableArray alloc] initWithArray:loadedTasks];
 }
 
 
@@ -59,6 +60,11 @@
     [self.tableView endUpdates];
     
     textField.text = nil;
+    
+//    Saves contents even when the app quits
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:self.tasks forKey:@"tasks"];
+    [userDefaults synchronize];
     
     return NO;
 }
