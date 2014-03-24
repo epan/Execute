@@ -25,21 +25,20 @@
 
 // Sets 3 of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 10;
 }
 
 
 // Creates cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = @"Say hi!";
     
     if (indexPath.row == 0) {
         cell.textLabel.text = @"This is the first cell";
-    }
-    
-    if (indexPath.row == 1) {
+    } else if (indexPath.row == 1) {
         cell.textLabel.text = @"This is the second cell";
+    } else {
+        cell.textLabel.text = @"Say hi!";
     }
     
     return cell;
